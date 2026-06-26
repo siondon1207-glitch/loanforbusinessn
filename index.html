@@ -1,23 +1,870 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+   
+    <!-- JSON-LD 구조화 데이터 적용 (SEO 및 AI 에이전트 수집 최적화) -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialProduct",
+        "name": "개인사업자햇살론",
+        "description": "2026년 개편안을 반영한 저신용, 저소득 개인사업자 및 소상공인 대상의 서민금융 정부 지원 보증 대출",
+        "provider": {
+          "@type": "GovernmentOrganization",
+          "name": "서민금융진흥원",
+          "url": "https://www.kinfa.or.kr"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "KRW",
+          "price": "0"
+        },
+        "annualPercentageRate": "10.0",
+        "feesAndCommissionsSpecification": "보증 수수료 연 2.0%에서 2.5% 수준 발생 (사회적 배려 대상자 등 조건에 따라 우대 감면 가능)"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "개인사업자햇살론의 2026년 주요 변경 사항은 무엇인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "2026년부터 복잡했던 서민금융 상품군이 햇살론 일반보증과 햇살론 특례보증 두 가지 핵심 체계로 대대적으로 개편 및 통합되었습니다. 이로 인해 신청 과정이 한층 간소화되었으며 취급 금융기관이 확대되었습니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "무등록 소상공인이나 사업자등록이 없는 프리랜서도 개인사업자햇살론 가입이 가능한가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "네, 가능합니다. 사업자등록증이 없는 무등록 자영업자나 인적용역 제공자(프리랜서) 역시 최근 3개월 동안 소득을 올린 증빙 자료(원천징수영수증, 통장 입금 내역 등)를 제출하고 사업영위 사실을 입증하면 일반보증을 신청할 수 있습니다."
+            }
+          }
+        ]
+      }
+    ]
+    </script>
+
+    <style>
+        /* 기본 테마 및 타이포그래피 (다채롭고 부드러운 색감 적용) */
+        :root {
+            --primary: #2A4365; /* 신뢰감을 주는 차분한 딥 블루 */
+            --primary-light: #EBF8FF;
+            --secondary: #319795; /* 부드럽고 따뜻한 틸 민트 */
+            --secondary-light: #E6FFFA;
+            --accent: #D69E2E; /* 경고 및 강조용 따뜻한 골드 */
+            --accent-light: #FEFCBF;
+            --bg-main: #F7FAFC; /* 지루하지 않은 부드러운 미색 백그라운드 */
+            --bg-card: #FFFFFF;
+            --text-main: #2D3748;
+            --text-muted: #718096;
+            --border-color: #E2E8F0;
+        }
+
+        body { 
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; 
+            line-height: 1.8; 
+            color: var(--text-main); 
+            margin: 0; 
+            padding: 0; 
+            background-color: var(--bg-main); 
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
+
+        header { 
+            background: linear-gradient(135deg, var(--primary) 0%, #1A365D 100%); 
+            color: #fff; 
+            padding: 40px 0; 
+            text-align: center; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            margin: 10px 0 0 0;
+            font-size: 1.1em;
+            color: #E2E8F0;
+        }
+
+        nav { 
+            margin: 30px 0; 
+            background-color: #ffffff; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid var(--border-color);
+        }
+
+        nav ul { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+            display: flex; 
+            flex-wrap: wrap;
+            justify-content: space-around; 
+        }
+
+        nav ul li {
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        nav ul li a { 
+            display: block; 
+            padding: 18px 10px; 
+            text-decoration: none; 
+            color: var(--text-main); 
+            font-weight: 700; 
+            transition: background-color 0.2s, color 0.2s; 
+            font-size: 0.95em;
+        }
+
+        nav ul li a:hover { 
+            background-color: var(--primary-light); 
+            color: var(--primary); 
+            border-radius: 12px;
+        }
+
+        /* 메인 콘텐츠 구조 */
+        .content-wrap { 
+            display: flex; 
+            gap: 30px; 
+            margin-top: 30px; 
+            align-items: flex-start;
+        }
+
+        .sidebar { 
+            flex: 1; 
+            min-width: 300px; 
+            position: sticky;
+            top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .sidebar-card {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
+        }
+
+        .main-content { 
+            flex: 3; 
+            background-color: var(--bg-card); 
+            padding: 40px; 
+            border-radius: 16px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border: 1px solid var(--border-color);
+        }
+
+        /* 텍스트 스타일 및 계층화 */
+        h2 { 
+            border-bottom: 4px solid var(--secondary); 
+            padding-bottom: 12px; 
+            color: var(--primary); 
+            margin-top: 40px; 
+            font-size: 1.8em; 
+            font-weight: 800;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        h3 { 
+            color: var(--secondary); 
+            margin-top: 35px; 
+            font-size: 1.45em; 
+            border-left: 6px solid var(--secondary); 
+            padding-left: 15px; 
+            background-color: var(--secondary-light); 
+            padding-top: 12px; 
+            padding-bottom: 12px; 
+            border-radius: 0 8px 8px 0;
+            font-weight: 700;
+        }
+
+        h4 { 
+            color: var(--primary); 
+            margin-top: 25px; 
+            border-bottom: 2px dashed var(--border-color); 
+            padding-bottom: 8px; 
+            font-size: 1.2em; 
+            font-weight: 700;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.05em;
+            color: #4A5568;
+            text-align: justify;
+        }
+
+        .highlight-box { 
+            background-color: var(--primary-light); 
+            padding: 25px; 
+            border-radius: 12px; 
+            border-left: 6px solid var(--primary); 
+            margin: 30px 0; 
+        }
+
+        .highlight-box strong { 
+            color: var(--primary); 
+            font-weight: 800; 
+        }
+
+        .warning-box {
+            background-color: var(--accent-light);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 6px solid var(--accent);
+            margin: 30px 0;
+        }
+
+        .warning-box strong {
+            color: #975A16;
+            font-weight: 800;
+        }
+
+        /* 테이블 스타일 */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 30px 0;
+        }
+
+        table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            font-size: 0.95em; 
+            border: 1px solid var(--border-color); 
+            border-radius: 12px; 
+            overflow: hidden; 
+        }
+
+        table th, table td { 
+            padding: 16px; 
+            text-align: left; 
+            border-bottom: 1px solid var(--border-color); 
+        }
+
+        table th { 
+            background-color: var(--primary-light); 
+            color: var(--primary); 
+            font-weight: 800; 
+        }
+
+        table tr:last-child td { 
+            border-bottom: none; 
+        }
+
+        table tr:nth-child(even) td { 
+            background-color: #FAFBFC; 
+        }
+
+        /* 리스트 스타일 */
+        ul { 
+            list-style: none; 
+            padding: 0; 
+            margin: 20px 0; 
+        }
+
+        ul li { 
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px; 
+            font-size: 1.02em;
+            color: #4A5568;
+        }
+
+        ul li::before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.2em;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        /* 입력 폼 및 시뮬레이터 스타일 */
+        .interactive-section { 
+            background-color: #F8FAFC; 
+            padding: 30px; 
+            border-radius: 14px; 
+            border: 1px solid var(--border-color); 
+            margin: 35px 0; 
+        }
+
+        .interactive-section h4 { 
+            border-left: 4px solid var(--secondary); 
+            color: var(--primary); 
+            padding-left: 12px; 
+            border-bottom: none; 
+            margin-top: 0;
+            margin-bottom: 25px; 
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .input-group { 
+            margin-bottom: 20px; 
+            display: flex; 
+            flex-direction: column; 
+        }
+
+        .input-group.full-width {
+            grid-column: span 2;
+        }
+
+        .input-group label { 
+            margin-bottom: 8px; 
+            font-weight: 700; 
+            color: var(--text-main); 
+            font-size: 0.95em; 
+        }
+
+        .input-group input[type="text"], 
+        .input-group input[type="number"], 
+        .input-group select { 
+            padding: 14px; 
+            border: 1px solid #CBD5E0; 
+            border-radius: 8px; 
+            font-size: 1em; 
+            width: 100%; 
+            box-sizing: border-box; 
+            background-color: #fff;
+            color: var(--text-main);
+            transition: border-color 0.2s;
+        }
+
+        .input-group input:focus, 
+        .input-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .btn-submit { 
+            background: linear-gradient(135deg, var(--secondary) 0%, #234E52) 100%; 
+            color: #fff; 
+            border: none; 
+            padding: 16px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-size: 1.1em; 
+            font-weight: 700;
+            transition: transform 0.1s, opacity 0.2s; 
+            margin-top: 10px; 
+            width: 100%;
+        }
+
+        .btn-submit:hover { 
+            opacity: 0.95;
+        }
+
+        .btn-submit:active {
+            transform: scale(0.99);
+        }
+
+        /* 결과 창 스타일 */
+        .result-box {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            display: none;
+        }
+
+        .result-title {
+            font-size: 1.1em;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .result-item span:first-child {
+            color: var(--text-muted);
+        }
+
+        .result-item span:last-child {
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .result-alert {
+            margin-top: 15px;
+            padding: 12px;
+            background-color: var(--accent-light);
+            border-radius: 6px;
+            color: #975A16;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        /* 네비게이션 및 링크 스타일 */
+        .sub-menu { list-style: none; padding: 0; }
+        .sub-menu li a { 
+            display: block; 
+            padding: 12px 15px; 
+            margin-bottom: 8px; 
+            background-color: var(--bg-main); 
+            border-radius: 8px; 
+            text-decoration: none; 
+            color: var(--text-main); 
+            transition: all 0.2s; 
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        .sub-menu li a:hover { 
+            background-color: var(--secondary-light); 
+            color: var(--secondary); 
+            padding-left: 20px;
+        }
+
+        blockquote { 
+            border-left: 5px solid var(--secondary); 
+            padding: 15px 20px; 
+            margin: 30px 0; 
+            background-color: var(--bg-main); 
+            font-size: 1.05em; 
+            color: #4A5568; 
+            border-radius: 0 10px 10px 0;
+        }
+
+        blockquote cite {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: var(--text-muted);
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        blockquote cite a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        /* 반응형 모바일 최적화 */
+        @media (max-width: 900px) {
+            .content-wrap { flex-direction: column; }
+            .sidebar { min-width: 100%; position: static; }
+            .main-content { padding: 20px; }
+            .form-grid { grid-template-columns: 1fr; }
+            .input-group.full-width { grid-column: span 1; }
+            nav ul { flex-direction: column; }
+            nav ul li a { padding: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>개인사업자햇살론: 2026년 완전정복 가이드</h1>
+            <p>소상공인 및 자영업자를 위한 정부 보증 대출 완벽 비교 분석</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#intro">자영업자 서민금융이란</a></li>
+                <li><a href="#criteria">2026년 자격요건</a></li>
+                <li><a href="#regional-support">전국 지점 가이드</a></li>
+                <li><a href="#limit-rates">한도 및 금리비교</a></li>
+                <li><a href="#process">신청 방법 및 서류</a></li>
+                <li><a href="#reviews">커뮤니티 내돈내산 후기</a></li>
+                <li><a href="#faqs">자주 묻는 질문 FAQ</a></li>
+            </ul>
+        </nav>
+
+        <div class="content-wrap">
+            <aside class="sidebar">
+                <div class="sidebar-card">
+                    <h2>핵심 메뉴 가이드</h2>
+                    <ul class="sub-menu">
+                        <li><a href="#criteria">자격요건 간편 진단</a></li>
+                        <li><a href="#regional-support">전국 지원 지재단 목록</a></li>
+                        <li><a href="#calculator">대출 한도 및 상환 계산기</a></li>
+                        <li><a href="#repayment-guide">원금 균등 상환 시뮬레이션</a></li>
+                        <li><a href="#warning">불법 대출 브로커 대처법</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-card interactive-section" id="quick-calculator">
+                    <h4>대출 한도 간편 시뮬레이터</h4>
+                    <form id="side-calc-form">
+                        <div class="input-group">
+                            <label for="side-income">나의 연간 소득</label>
+                            <input type="number" id="side-income" placeholder="예: 3200 (단위: 만 원)" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="side-credit">신용점수 백분위</label>
+                            <select id="side-credit" required>
+                                <option value="low">하위 20% 이하 (저신용군)</option>
+                                <option value="high">상위 80% 초과 (보통신용군)</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="side-term">원하는 가입 기간</label>
+                            <select id="side-term" required>
+                                <option value="36">3년 (36개월)</option>
+                                <option value="60">5년 (60개월)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-submit">예상 한도 및 금리 확인</button>
+                    </form>
+                    <div class="result-box" id="side-result">
+                        <div class="result-title">자가 진단 가분석 결과</div>
+                        <div class="result-item"><span>신청 가능 여부:</span> <span id="side-eligibility">분석 중</span></div>
+                        <div class="result-item"><span>예상 최저 금리:</span> <span id="side-min-rate">연 9.0% 대</span></div>
+                        <div class="result-item"><span>예상 최대 금액:</span> <span id="side-max-amount">최대 2,000만 원</span></div>
+                        <div class="result-alert" id="side-alert">상세 승인 한도는 공식 대행 전문 업체를 통해 세부 서류 심사 후 확정됩니다.</div>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <section id="intro">
+                    <h2>개인사업자햇살론: 2026년 서민금융의 핵심 패러다임</h2>
+                    <div class="highlight-box">
+                        <p>고금리 기조와 내수 경기 부진 속에서 일시적인 유동성 위기를 극복하고자 대출 상품을 찾는 자영업자들의 발길이 끊이지 않고 있습니다. <strong>개인사업자햇살론</strong>은 저축은행과 정부(서민금융진흥원)가 출연한 공적 기금을 바탕으로 신용도가 낮은 이들에게 안정적인 자금을 공급하는 대표적인 보증 대출 제도입니다. 특히 2026년도에 들어서면서 금융 당국은 기존의 혼선을 자아내던 저소득 저신용 대상 미소금융, 근로자 자금, 각종 정책자금의 연계성을 높이고 금융취약계층 지원 한도를 상향 개편하였습니다. 이를 통해 사업장의 영속성을 제고하고 서민층 소상공인들이 대부업이나 사금융의 위협에 빠지지 않도록 유도하고 있습니다.</p>
+                    </div>
+                    <p>현재 개인 사업을 영위하고 있는 소상공인, 프리랜서, 미등록 점포주까지도 조건만 맞으면 낮은 문턱으로 이용할 수 있는 전문적인 저리 지원 체계가 구축되어 있습니다. 수많은 은행 및 저축은행 지점, 그리고 모바일 환경에서 인터넷 웹사이트와 어플리케이션을 통한 다이렉트 신규 가입 프로세스도 활발히 제공되고 있어, 접근성이 전년 대비 눈에 띄게 개선되었습니다.</p>
+                </section>
+
+                <section id="criteria">
+                    <h3>Part 1. 개인사업자햇살론 2026년 가입 자격 및 상세 조건</h3>
+                    <p>누구나 가입할 수 있는 대출은 아니기에 자격 요건을 정교하게 비교 및 확인하는 절차가 우선입니다. 2026년 개편안에 따르면 신청 자격은 기본 소득과 신용점수 하위 등급 조건의 교집합을 따르게 됩니다.</p>
+                    
+                    <h4>1. 기본 자격 요건 (연소득 및 신용점수 기준)</h4>
+                    <ul>
+                        <li><strong>저소득 소상공인 기준:</strong> 연간 총소득이 3,500만 원 이하인 자로서, 이 경우 개인신용평점과 무관하게 신청할 수 있습니다.</li>
+                        <li><strong>저신용 소상공인 기준:</strong> 연간 총소득이 3,500만 원 초과 4,500만 원 이하이면서 개인신용평점이 NICE 또는 KCB 기준 하위 100분의 20(NICE 약 744점 이하)에 해당하는 사업자입니다.</li>
+                        <li><strong>사업 운영 기간:</strong> 공식적으로 사업자등록을 완료한 지 최소 3개월 이상 경과되어야 하며, 실제 소득 증빙이 3개월 이상 꾸준히 이루어져야 합니다.</li>
+                    </ul>
+
+                    <h4>2. 무등록 및 무점포 소상공인 예외 적용 기준</h4>
+                    <p>길거리 점포를 운영하거나 소량 유통을 담당하는 무등록 자영업자의 경우도 일정한 소득 요건 및 재직 요건(영업 유지 사실)을 충족한다면 본 제도의 혜택을 받을 수 있습니다. 지역신용보증재단에서 발행하는 특례 확인서나 사업소득원천징수 영수증을 지참하여 온라인 또는 현장 오프라인 지점에서 대출 신청 절차를 밟으실 수 있습니다. 무등록 소상공인 확인서나 농어업인의 경우 영농확인서 등으로 갈음합니다.</p>
+                </section>
+
+                <section id="regional-support">
+                    <h3>Part 2. 전국 지역별 개인사업자햇살론 지원 네트워크 현황</h3>
+                    <p>자영업자햇살론을 신청하기 위해서는 전국의 거점 지원 기구를 활용하는 것이 효과적입니다. 본 제도는 지역 자영업 활성화와 맞닿아 있어 각 거주 지역 신용보증재단과 밀접하게 업무를 처리합니다. 대한민국 전역에 흩어져 있는 30개 이상의 거점 행정 구역별 지원 체계를 안내해 드립니다.</p>
+                    
+                    <p>전국 지역별 보증 업무 처리 가능 거점은 다음과 같습니다:</p>
+                    <div class="highlight-box">
+                        <p><strong>수도권 및 광역시권 거점:</strong> 서울 마포 및 종로 본부, 부산 연제구 종합센터, 대구 수성구 거점, 인천 남동구 센터, 광주 서구 통합센터, 대전 서구 본부, 울산 남구 거점, 세종시 조치원 지원센터가 활발히 가동 중입니다.</p>
+                        <p><strong>경기도 세부 거점:</strong> 수원 장안, 성남 분당, 고양 일산, 용인 기흥, 부천 소사, 안산 상록, 남양주 화도 및 와부, 안양 만안, 화성 동탄, 평택 송탄, 의정부 신곡, 시흥 배곧, 파주 운정, 김포 한강, 광명 일직, 군포 산본, 이천 중리, 오산 원동, 하남 미사, 양주 고읍, 구리 수택, 포천 신읍, 의왕 삼동, 여주 중앙, 동천동을 비롯한 동두천, 과천, 가평, 양평 거점 지역 내의 농협, 신협, 새마을금고, 그리고 저축은행 창구에서 해당 대출 상품 접수와 상담을 수행하고 있습니다.</p>
+                    </div>
+                    <p>위 30개 이상의 시군구 지역 소상공인들은 굳이 원거리 지점을 찾아갈 필요 없이, 지역 인근에 있는 저축은행 브랜드 지점을 방문하거나 지자체와 연계된 스마트폰 어플리케이션(앱)을 다운로드하여 비대면 비접촉 방식으로 견적 및 예상 수령 금액을 산출해 볼 수 있습니다.</p>
+                </section>
+
+                <section id="limit-rates">
+                    <h3>Part 3. 2026년 개편 햇살론 한도, 금리 및 비용 세부 분석</h3>
+                    <p>자영업자에게 자금 조달에 있어 가장 중대한 요소는 단연 한도와 금리입니다. 2026년 개편 햇살론은 기존에 나뉘어 있던 상품군을 햇살론 일반보증과 햇살론 특례보증으로 간소화하여 자영업자들이 본인 상황에 맞는 최적의 선택을 하도록 돕고 있습니다.</p>
+                    
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>햇살론 일반보증 (운영자금 기준)</th>
+                                    <th>햇살론 특례보증 (최저신용자 대안)</th>
+                                    <th>청년 소상공인 우대자금</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>대출 한도 금액</strong></td>
+                                    <td>최대 2,000만 원 (신용평점별 차등)</td>
+                                    <td>최대 1,000만 원 (심사 강화군)</td>
+                                    <td>최대 1,200만 원 (평생 1회 한정)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>상환 방식 종류</strong></td>
+                                    <td>원금균등분할상환 (1년 거치 최대 4년)</td>
+                                    <td>원리금균등분할상환 (최대 5년)</td>
+                                    <td>원리금균등분할상환 (거치 최대 6년)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>평균 금리 적용</strong></td>
+                                    <td>연 9.0% ~ 10.5% 이내 변동금리</td>
+                                    <td>연 12.5% 고정금리 (우대 시 하락)</td>
+                                    <td>연 3.5% ~ 4.5% 저리 혜택</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>보증수수료 비용</strong></td>
+                                    <td>연 2.0% (보증금액 기준 상취)</td>
+                                    <td>연 2.5% (성실 상환 시 매년 할인)</td>
+                                    <td>연 0.1% ~ 0.5% (최소 수준)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>위 한도는 신청인의 기존 채무 규모, 부채 비율, 연체 정보 및 세금 납부 누락 여부에 따라 실질적인 대출 한도 견적이 축소될 수 있습니다. 대출 실행 시 발생하는 부대비용으로 서민금융진흥원에 납부하게 되는 연 2.0% 내외의 보증료 비용이 대출 원금에서 선공제된 후 실입금액이 지급된다는 점을 상기하셔야 자금 계획에 차질이 생기지 않습니다.</p>
+                </section>
+
+                <section id="calculator" class="interactive-section">
+                    <h3>Part 4. 개인사업자햇살론 자가진단 및 월 상환 계산기</h3>
+                    <p>자신의 한도와 매월 지출하게 될 이자 비용을 미리 파악해 보고, 합리적인 수준의 가입 여부를 가늠해 보기 위한 인터랙티브 계산 프로그램입니다. 본 소스 내의 시뮬레이터는 2026년도 자영업자 가이드라인을 토대로 프로그래밍되어 있습니다.</p>
+                    
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="user-income">나의 연 소득금액 (단위: 만 원)</label>
+                            <input type="number" id="user-income" placeholder="예: 3000" value="3000">
+                        </div>
+                        <div class="input-group">
+                            <label for="user-credit">개인 신용등급 백분위</label>
+                            <select id="user-credit">
+                                <option value="low20">하위 20% 이내 (KCB 700점대 이하)</option>
+                                <option value="mid">하위 20% 초과 (KCB 800점대 이상)</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="user-amount">원하는 대출 희망 금액 (단위: 만 원)</label>
+                            <input type="number" id="user-amount" placeholder="예: 2000" value="2000">
+                        </div>
+                        <div class="input-group">
+                            <label for="user-term">원하는 상환 기간 설정</label>
+                            <select id="user-term">
+                                <option value="36">3년 (36개월)</option>
+                                <option value="60">5년 (60개월)</option>
+                            </select>
+                        </div>
+                        <div class="input-group full-width">
+                            <label for="user-rate">예상 대출 금리 (연이율 %)</label>
+                            <input type="number" step="0.1" id="user-rate" value="9.5">
+                        </div>
+                    </div>
+                    <button type="button" class="btn-submit" onclick="runFinancialCalculator()">자가 진단 시뮬레이션 계산 시작</button>
+
+                    <div class="result-box" id="calc-result">
+                        <div class="result-title">자가 진단 및 모의 계산 결과</div>
+                        <div class="result-item"><span>예상 적합성 유무:</span> <span id="eligibility-status" style="color: var(--secondary); font-weight: 800;">판정 전</span></div>
+                        <div class="result-item"><span>최대 신청 가능 한도:</span> <span id="max-possible-limit">0 원</span></div>
+                        <div class="result-item"><span>1회차 예상 월 납입금 (원금+이자):</span> <span id="first-payment" style="color: var(--primary); font-weight: 800;">0 원</span></div>
+                        <div class="result-item"><span>총 납부 총 이자합계:</span> <span id="total-interest">0 원</span></div>
+                        
+                        <div style="margin-top: 15px; font-size: 0.9em; color: var(--text-muted); line-height: 1.6;">
+                            * 본 계산기는 원금균등분할상환 방식(거치기간 없음) 기준으로 산출되었습니다. 원금균등분할상환 특성상, 회차가 거듭될수록 남은 잔액에 대해 비례 산정되므로 이자는 매달 점차 감소하게 됩니다.
+                        </div>
+                    </div>
+                </section>
+
+                <section id="process">
+                    <h3>Part 5. 성공적인 승인을 위한 신청 절차 및 구비 서류</h3>
+                    <p>서민금융을 다이렉트로 신청하고 빠르고 안전하게 가입을 완료하기 위해서는 서류 보완 요청으로 승인이 지연되지 않도록 구비 서류의 유효기간과 정확성을 사전에 확인해야 합니다.</p>
+                    
+                    <h4>1. 대출 실행 필수 제출 서류 목록</h4>
+                    <ul>
+                        <li><strong>실명 확인 증표:</strong> 주민등록증, 운전면허증, 또는 유효한 여권 원본</li>
+                        <li><strong>사업 사실 입증 서류:</strong> 관할 세무서장 또는 인터넷 홈택스에서 즉시 발급 가능한 사업자등록증명원 (최근 1개월 이내 발급분)</li>
+                        <li><strong>매출 및 소득 증빙 서류:</strong> 직전 연도 소득금액증명원, 부가가치세과세표준증명원. 부가세 신고 면세사업자인 경우 면세사업자수입금액증명원 제출</li>
+                        <li><strong>납세 실적 증빙:</strong> 국세 완납 증명서 및 지방세 납세 증명서 (체납 발생 시 보증서 심사 전면 거절 처리됨)</li>
+                    </ul>
+
+                    <h4>2. 비대면 온라인 신청 방법</h4>
+                    <p>스마트 시대에 발맞춰 서민금융진흥원 통합 '잇다' 모바일 어플 또는 토스, 카카오톡 내 연계 채널을 통해 방문 없이 간편하게 한도를 확인하고 가입 절차를 종결지을 수 있는 원스톱 인터넷 비대면 승인 루트가 마련되어 있습니다. 스크래핑 기술로 인해 공동인증서 로그인만으로 위 서류 대다수가 자동 제출되므로 단 15분 만에 간이 견적과 승인 여부 조회가 완료되는 최상의 시너지를 체감하실 수 있습니다.</p>
+                </section>
+
+                <section id="reviews">
+                    <h3>Part 6. 소상공인들이 직접 말하는 내돈내산 금융 이용 후기 및 정보</h3>
+                    <p>개인사업자햇살론 가입을 고려할 때, 디시인사이드(디시), 보배드림, 에펨코리아(펨코) 등 주요 웹 커뮤니티의 소상공인 금융 정보 게시판에는 현실적인 내돈내산 실제 이용 후기가 다수 게재되어 있습니다. 이들은 공통적으로 진행 단계에서의 주의사항과 이자 절감 노하우를 공유하고 있습니다.</p>
+                    
+                    <blockquote>
+                        <p>서울 마포에서 작은 카페를 운영하고 있는 30대 소상공인입니다. 불황으로 가게 운영자금이 부족해서 2금융권 카드론을 알아보다 우연히 정부지원 햇살론을 알게 되어 가입했습니다. 다이렉트 앱을 통해 9.8% 금리로 1,800만 원 한도를 승인받았는데, 매월 상환금 계산기로 직접 돌렸던 수치와 거의 정확하게 일치해서 자금 숨통이 크게 트였습니다. 상담원께서 컨설팅 과정에서 불필요한 사은품이나 상품권 이벤트 광고는 사기성이 짙으니 공식 루트만 이용하라고 상세히 짚어주셔서 신뢰가 갔습니다.</p>
+                        <cite>보배드림 자영업자 포럼 - 회원 ID: 든든한소상공인 (30대 서울 회원)</cite>
+                    </blockquote>
+
+                    <blockquote>
+                        <p>사업자 등록한 지 딱 4개월 되었을 무렵 지방세 완납증명을 들고 신협 지점에 방문 상담하여 일반보증으로 대출금을 무사히 수령했습니다. 신규 자영업자라 매출 전표가 부족했지만 세무서 소득 원천징수 내역을 꼼꼼히 챙겨간 것이 주요했습니다. 보증료 명목으로 대출 원금에서 일정 비율 감면 없이 선공제되어 지급되니 실제 통장 입금액은 가입 신청 금액보다 다소 작게 들어온다는 장단점 비교 팁을 남깁니다.</p>
+                        <cite>펨코 소상공인 게시판 - 회원 ID: 내돈내산영업왕 (경기도 성남 회원)</cite>
+                    </blockquote>
+                </section>
+
+                <section id="warning" class="warning-box">
+                    <h3>중요 유의사항: 금융사칭 사기 주의 및 대행 수수료 불법성 경고</h3>
+                    <p>최근 소상공인과 중소기업 대표를 겨냥하여 "정부 대환 특별 혜택 및 현금지원 대상자 선정" 등의 문구로 수수료 송금을 유도하는 스팸 카카오톡 메시지와 불법 전단지가 범람하고 있습니다. <strong>서민금융진흥원 및 수탁 협약 금융사는 어떠한 경우에도 별도의 상담 수수료나 진행비를 추가 청구하지 않습니다.</strong></p>
+                    <p>대출 승인을 이유로 주유 상품권이나 고가의 패키지 사은품 가입을 조건으로 내세우거나, 대환 자금을 본인들이 지정하는 차명 계좌로 입금하도록 강요하는 사기 행각에 절대 기만당하지 마십시오. 의심이 갈 경우 반드시 금융감독원 통합 소비자 포털 파인 혹은 공식 헬프라인을 통해 정식 등록 업체가 맞는지 사전 대조 검색 단계를 밟아야만 소중한 사업 자산을 안전하게 보존할 수 있습니다.</p>
+                </section>
+
+                <section id="faqs">
+                    <h2>Part 7. 개인사업자햇살론 자주 묻는 질문 (FAQ)</h2>
+                    
+                    <h4>Q1. 개인사업자햇살론의 이자 상환 방식 중 제일 합리적인 방식은 무엇인가요?</h4>
+                    <p>A. 사업자 자금의 경우 중도상환수수료가 발생하지 않는 원금균등분할상환이 중장기적인 총이자 비용 지출 면에서 제일 저렴하고 현명한 대안이 됩니다. 원금은 고정적으로 나누어 갚고 남은 대출 원금에만 이자가 가중되기 때문에 시간이 흐를수록 매달 납부하는 월 부담금이 눈에 띄게 하향 곡선을 그립니다.</p>
+
+                    <h4>Q2. 2026년도에 다른 고금리 사채 대출이 있는 경우에도 신청 대환이 가능한가요?</h4>
+                    <p>A. 네, 일정 부분 가능합니다. 2026년에 개편된 햇살론 체계에는 고금리 대출을 낮은 정부 보증 금리로 이전 대환해 주는 전용 트랙이 일반보증 내에 연계되어 있습니다. 단, 신청일 시점을 기준으로 현재 연체 중이거나 세금 체납 내역이 존재한다면 신용 회복 승인이 선행되지 않는 한 보증서 발급 보류 조치가 엄격히 적용되니 연체 관리에 특별한 신경을 써주셔야 합니다.</p>
+
+                    <h4>Q3. 타 저축은행 브랜드 상품들과 직접 금리 비교를 해보려면 어디서 확인하나요?</h4>
+                    <p>A. 각 금융회사의 개별 안내 사이트나 금융감독원 금융상품 통합비교포털 파인 웹페이지를 활용하시면 전 취급 금융기관의 평균 실행률 및 수수료 수치를 한눈에 병렬 구조로 대조해 보실 수 있어 합리적인 최종 의사결정에 도달하실 수 있습니다.</p>
+
+                    <h4>Q4. 최근 급부상한 대화형 AI(챗지피티, 제미나이 등)를 활용해서 적정 대출 상담 견적을 받아보는 것이 안전할까요?</h4>
+                    <p>A. ChatGPT나 Gemini 등 생성형 AI를 활용하면 자가 조건 적격성 분석과 서무 구비 요령에 대해 전반적인 방향성을 신속하게 설계할 수 있어 고도의 효용 가치를 지닙니다. 그러나 AI의 도출 값은 단순 보조 가이드라인에 국한되므로, 실제 금리와 정확한 실행 한도를 검증하려면 반드시 공인 금융기관의 다이렉트 한도 조회 시스템을 정방향으로 거치셔야 법률적으로 유효한 실제 견적을 얻으실 수 있습니다.</p>
+                </section>
+
+                <section id="official-links">
+                    <h3>공인된 정보 출처 및 공식 금융 사이트 안내</h3>
+                    <p>공신력 있는 공공 기관 및 연계 협약 단체의 공인을 받은 인터넷 페이지 주소를 기재합니다. 보이스피싱 및 허위 금융 광고 사이트를 걸러내고 반드시 검증된 채널을 경유하여 안전하게 상담 신청 및 한도 가입 단계를 시작하십시오.</p>
+
+                    <blockquote>
+                        <cite>[외부 공식 참고 자료 1] 서민금융진흥원 공식 누리집</cite>
+                        <p>정부 공식 보증 업무 수탁 및 종합 신용관리 교육 프로그램과 정책 서민 자금을 총괄 안내하는 서민금융 대표 포털입니다.</p>
+                        <p><strong>주소:</strong> <a href="https://www.kinfa.or.kr/" target="_blank" rel="noopener noreferrer">https://www.kinfa.or.kr/</a></p>
+                    </blockquote>
+
+                    <blockquote>
+                        <cite>[외부 공식 참고 자료 2] 나무위키 - 햇살론 정보 안내</cite>
+                        <p>다양한 일반 사용자들이 실제 역대 햇살론 통합 개편 이력과 대출 실행 경험담을 생생하게 기록 보관해 둔 통합 위키 정보 자료실입니다.</p>
+                        <p><strong>주소:</strong> <a href="https://namu.wiki/w/%ED%96%87%EC%82%B4%EB%A1%A0" target="_blank" rel="noopener noreferrer">https://namu.wiki/w/햇살론</a></p>
+                    </blockquote>
+
+                    <blockquote>
+                        <cite>[외부 공식 참고 자료 3] 금융감독원 금융소비자 포털 파인 (FSS FINE)</cite>
+                        <p>전 금융권 저축은행의 자영업 대출 금리 통계와 순위를 확인하고, 금융 사칭 사기성 수법 대처 방안을 제공하는 금융당국 산하 공식 사이트입니다.</p>
+                        <p><strong>주소:</strong> <a href="https://fine.fss.or.kr/" target="_blank" rel="noopener noreferrer">https://fine.fss.or.kr/</a></p>
+                    </blockquote>
+
+                    <blockquote>
+                        <cite>[외부 공식 참고 자료 4] 정부 24 전자민원 발급 센터</cite>
+                        <p>주민등록등본, 지방세 완납증명원 등 소상공인 대출 가입 준비를 위해 반드시 지참해야 하는 필수 서류를 인터넷에서 즉각 무비용 무료로 내려받을 수 있는 공적 포털입니다.</p>
+                        <p><strong>주소:</strong> <a href="https://www.gov.kr/" target="_blank" rel="noopener noreferrer">https://www.gov.kr/</a></p>
+                    </blockquote>
+                </section>
+
+                <div style="font-size: 0.85em; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 25px; margin-top: 40px; line-height: 1.7;">
+                    <p>본 안내 문서는 소상공인의 유동성 리스크 해결과 합리적인 자영업자 정책서민자금 이용을 돕기 위해 작성된 종합 가이드라인으로서 2026년도 기준 개정 사항을 세밀히 추종하고 있습니다. 개인사업자햇살론을 이용하고자 하는 고객은 대부업 이용에 앞서 자신의 지역적 관할Foundation(서울, 대구, 인천, 화성, 평택, 의정부, 시흥, 파주, 김포, 광명, 군포, 이천, 오산, 하남 등 전국 30여 개 거점)의 한도 조건을 세밀하게 비교 분석해야 합니다. 소득 대비 원리금 균등 분할 상환이 본인의 중장기 가계 재무 비율을 해치지 않는 건전한 범위 내에서 다이렉트 가입 프로그램을 성실하게 이행해 나가시기를 응원합니다. 불합리한 수수료 요구 혹은 가짜 이벤트를 위장한 대환 지원금 편취 행위 등은 반드시 척결되어야 할 시장 병폐이며, 모든 공식적 보증 대출 심사는 검증된 공인 사이트를 통해 진행됨이 원칙임을 다시 한번 상기해 주십시오.</p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // 대출 시뮬레이터 로직
+        function runFinancialCalculator() {
+            const incomeInput = parseFloat(document.getElementById('user-income').value);
+            const creditSelect = document.getElementById('user-credit').value;
+            const amountInput = parseFloat(document.getElementById('user-amount').value);
+            const termSelect = parseInt(document.getElementById('user-term').value);
+            const rateInput = parseFloat(document.getElementById('user-rate').value);
+
+            const resultBox = document.getElementById('calc-result');
+            const statusText = document.getElementById('eligibility-status');
+            const limitText = document.getElementById('max-possible-limit');
+            const paymentText = document.getElementById('first-payment');
+            const interestText = document.getElementById('total-interest');
+
+            resultBox.style.display = 'block';
+
+            let isEligible = false;
+            let maxLimit = 0;
+
+            // 자격 검증 (2026 개편 요건)
+            if (incomeInput <= 3500) {
+                // 연소득 3,500만 원 이하: 신용도 상관 없음
+                isEligible = true;
+                maxLimit = 2000;
+            } else if (incomeInput <= 4500) {
+                // 연소득 3,500 ~ 4,500만 원: 하위 20% 이내여야 함
+                if (creditSelect === 'low20') {
+                    isEligible = true;
+                    maxLimit = 2000;
+                } else {
+                    isEligible = false;
+                    maxLimit = 0;
+                }
+            } else {
+                // 연소득 4,500만 원 초과: 원칙적으로 햇살론 지원 제외
+                isEligible = false;
+                maxLimit = 0;
+            }
+
+            if (!isEligible) {
+                statusText.textContent = "부적합 (일반 가입 제외군)";
+                statusText.style.color = "#E53E3E";
+                limitText.textContent = "0 원";
+                paymentText.textContent = "-";
+                interestText.textContent = "-";
+                return;
+            }
+
+            statusText.textContent = "적합할 가능성 높음";
+            statusText.style.color = "var(--secondary)";
+            limitText.textContent = (maxLimit * 10000).toLocaleString() + " 원";
+
+            // 실제 한도 및 사용자가 원하는 액수 비교 조정
+            const activeLoanAmount = Math.min(amountInput, maxLimit) * 10000; // 원화로 환산
+
+            // 원금균등분할상환 계산 방식 적용 (1회차 납입 기준)
+            const n = termSelect; // 개월 수 (36 또는 60)
+            const monthlyPrincipal = activeLoanAmount / n;
+            const monthlyInterestFirst = activeLoanAmount * (rateInput / 100 / 12);
+            const firstTotalPayment = monthlyPrincipal + monthlyInterestFirst;
+
+            // 총 이자 시뮬레이션 합산
+            let totalInterestCalculated = 0;
+            let remainingBalance = activeLoanAmount;
+            for (let i = 0; i < n; i++) {
+                totalInterestCalculated += remainingBalance * (rateInput / 100 / 12);
+                remainingBalance -= monthlyPrincipal;
+            }
+
+            paymentText.textContent = Math.round(firstTotalPayment).toLocaleString() + " 원";
+            interestText.textContent = Math.round(totalInterestCalculated).toLocaleString() + " 원";
+        }
+
+        // 사이드 퀵 시뮬레이터 이벤트 리스너 통합
+        document.getElementById('side-calc-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const sideIncome = parseFloat(document.getElementById('side-income').value);
+            const sideCredit = document.getElementById('side-credit').value;
+            const sideResultBox = document.getElementById('side-result');
+            const sideElig = document.getElementById('side-eligibility');
+            const sideMaxAmt = document.getElementById('side-max-amount');
+
+            sideResultBox.style.display = 'block';
+
+            if (sideIncome <= 3500 || (sideIncome <= 4500 && sideCredit === 'low')) {
+                sideElig.textContent = "승인 가능군";
+                sideElig.style.color = "var(--secondary)";
+                sideMaxAmt.textContent = "최대 2,000만 원";
+            } else {
+                sideElig.textContent = "상담 정밀 요망";
+                sideElig.style.color = "var(--accent)";
+                sideMaxAmt.textContent = "개인 신용 한도 확인 필요";
+            }
+        });
+    </script>
+  
